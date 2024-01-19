@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: arial;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;      
+    }
+    .button {
+      display: inline-block;
+      padding: 0.5em 1em;
+      font-size: 1.2rem;
+      text-decoration: none;
+      color: azure;
+      background-color: royalblue;
+      border-radius: 1.5em;
+    }
+    .button--transparent {
+      display: inline-block;
+      padding: 0.5em 1em;
+      font-size: 1.2rem;
+      text-decoration: none;
+      color: royalblue;
+      background-color: transparent;
+      border: 1px solid royalblue;
+      border-radius: 1.5em;
+    }
+    details {
+      border: 1px solid #aaa;
+      border-radius: 4px;
+      padding: 0.5em 0.5em 0;
+    }
+    summary {
+      font-weight: bold;
+      margin: -0.5em -0.5em 0;
+      padding: 0.5em;
+    }
+    details[open] {
+      padding: 0.5em;
+    }
+    details[open] summary {
+      border-bottom: 1px solid #aaa;
+      margin-bottom: 0.5em;
+    }
+
+    .nav {
+      background-color: slateblue;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+    }
+
+    .nav__logo {
+      height: 100%;
+      background-color: #fff;
+    }
+
+    .nav__img {
+      height: 100%;
+    }
+
+    .nav__link {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .nav__link--color {
+      color: crimson;
+    }
+    
+  </style>
+</head>
+<body>
+  <main class="container">    
+    <h1>Metodología BEM</h1>
+    <p>La metodología Block, Element, Modifier (comúnmente conocida como BEM) es una convención de nomenclatura popular para clases en HTML y CSS.</p>
+    <article>
+      <details>
+        <summary>Block</summary>
+        Cualquier elemento autonomo que podemos reutilizar en cualquier parte de la página (menú, logo, galería, tarjeta).
+        <br>A los bloques se les nombra con la funcionalidad del bloque.      
+        <br><br>  
+        <strong>
+          < nav class="nav"></nav>        
+        </strong>
+        <br>
+        <strong>
+          < header class="header"></header>
+        </strong>
+        <br>
+        <strong>
+          < section class="container"></section>
+        </strong>
+      </details>
+    </article>
+    <article>
+      <details>
+        <summary>Element</summary>
+        Un elemento son porciones más pequeñas internas a un bloque. Se usa para ir dividiendo el bloque en segmentos más pequeños.
+        <br>Un elemento en BEM depende directamente de un Bloque, por lo que este debe estar dentro de un bloque.
+        <br><br>
+        <strong>        
+          < form class="form"><br>
+            < input type="type" class="form__input"><br>
+            < input type="submit" class="form__send"><br>
+          < /form><br>
+          <br>
+        </strong>
+      </details>
+    </article>
+    <article>
+      <details>
+        <summary>Modifier</summary>
+        Un modificador sirve para modificar algunas propiedades de un bloque o elemento.
+        <br>Un modificador en BEM, puede ser un bloque o un elemento, estos indican una modificación a dicho elemento o bloque.
+        <br><br>
+        <strong>
+          < nav class="nav"><br>
+            < a href="#" class="nav__link"></a><br>
+            < a href="#" class="nav__link nav__link--disabled"></a><br>
+          < /nav>
+        </strong>
+        <br><br>
+        <strong>
+          < input type="text" class="form__input form__input--color-gray">
+        </strong>
+      </details>
+    </article>
+  </main>
+  <br>
+
+  <header class="header">
+    <nav class="nav">
+      <div class="nav__logo">
+        <svg class="nav__img" xmlns="http://www.w3.org/2000/svg" width="82" height="40" fill="none" viewBox="0 0 82 40"><path fill="#FFD43D" d="M73.365 19.71c0 2.904-2.241 5.31-5.27 5.31-3.03 0-5.228-2.406-5.228-5.31 0-2.905 2.199-5.312 5.228-5.312s5.27 2.407 5.27 5.311Z"></path><path fill="#FF0C81" d="M48.764 19.544c0 2.946-2.323 5.145-5.27 5.145-2.904 0-5.227-2.2-5.227-5.145 0-2.947 2.323-5.104 5.228-5.104 2.946 0 5.27 2.158 5.27 5.104Z"></path><path fill="#11EEFC" d="M20.074 25.02c3.029 0 5.27-2.406 5.27-5.31 0-2.905-2.241-5.312-5.27-5.312-3.03 0-5.228 2.407-5.228 5.311 0 2.905 2.199 5.312 5.228 5.312Z"></path><path fill="#171A26" d="M68.095 30.54c-6.307 0-11.12-4.897-11.12-10.872 0-5.934 4.855-10.83 11.12-10.83 6.349 0 11.162 4.938 11.162 10.83 0 5.975-4.855 10.871-11.162 10.871Zm0-5.52c3.03 0 5.27-2.406 5.27-5.31 0-2.905-2.24-5.312-5.27-5.312-3.029 0-5.228 2.407-5.228 5.311 0 2.905 2.199 5.312 5.228 5.312ZM43.08 40c-4.813 0-8.506-2.116-10.373-5.934l4.896-2.655c.913 1.784 2.614 3.195 5.394 3.195 3.486 0 5.85-2.448 5.85-6.473v-.374c-1.12 1.411-3.111 2.49-6.016 2.49-5.768 0-10.373-4.481-10.373-10.581 0-5.934 4.813-10.788 11.12-10.788 6.431 0 11.162 4.605 11.162 10.788v8.299C54.74 35.27 49.76 40 43.08 40Zm.415-15.311c2.946 0 5.27-2.2 5.27-5.145 0-2.947-2.324-5.104-5.27-5.104-2.905 0-5.228 2.158-5.228 5.104s2.323 5.145 5.228 5.145ZM20.074 30.54c-6.307 0-11.12-4.897-11.12-10.872 0-5.934 4.854-10.83 11.12-10.83 6.348 0 11.162 4.938 11.162 10.83 0 5.975-4.855 10.871-11.162 10.871Zm0-5.52c3.029 0 5.27-2.406 5.27-5.31 0-2.905-2.241-5.312-5.27-5.312-3.03 0-5.228 2.407-5.228 5.311 0 2.905 2.199 5.312 5.228 5.312ZM0 0h5.892v30H0V0ZM82 6.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Z"></path></svg>        
+      </div>
+      <div class="nav__links">
+        <a href="" class="nav__link nav__link--color">Inicio</a>
+        <a href="" class="nav__link">Servicios</a>
+        <a href="" class="nav__link">Contacto</a>
+      </div>
+    </nav>
+  </header>
+
+  <br>
+  <div>
+    <a href="#" class="button">Soy un botón</a>
+    <a href="#" class="button--transparent">Soy un botón transparente</a>    
+  </div>  
+  <br>
+  <div>
+    <div class="card">
+      <h2 class="card__title">Jimmy García</h2>
+      <p class="card__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti provident, rerum facilis facere nesciunt culpa eaque, totam veritatis ea fuga rem consequatur ex quia et aliquid nam repellat autem. Ipsam.</p>
+      <img src="https://img.freepik.com/fotos-premium/avatar-redondo-ia-creado-ia-generativa_916303-439.jpg" alt="Card Avatar" class="card__image" width="200">
+      <ul class="social-icons">
+        <li class="social-icons__item">
+          <a href="#">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Instagram-Icon.png/768px-Instagram-Icon.png" alt="" class="social-icons__icon" />           
+          </a>
+        </li>
+        <li class="social-icons__item">
+          <a href="#">
+            <img src="https://static-00.iconduck.com/assets.00/facebook-icon-512x512-seb542ju.png" alt="" class="social-icons__icon" />           
+          </a>
+        </li>        
+      </ul>
+    </div>
+  </div>
+</body>
+</html>
